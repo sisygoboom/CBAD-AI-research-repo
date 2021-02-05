@@ -5,9 +5,11 @@ import tensorflow as tf
 from metrics import f1
 from pathlib import Path
 
-cb = CbadAi()
+cb = CbadAi(test_size=2)
+#cb = CbadAi()
 
 train_b, test_b = cb._get_data('tweeteval', 'ktrain')
+#train_b, test_b = cb._get_data('all', 'ktrain')
 
 x_train = train_b.data
 y_train = train_b.target
@@ -29,9 +31,7 @@ trn = t.preprocess_train(x_train, y_train)
 val = t.preprocess_test(x_test, y_test)
 
 model = t.get_classifier(multilabel=False, metrics=[
-    'accuracy', 
-    #'Recall',
-    #'Precision',
+    'accuracy',
     f1
     ])
 
@@ -44,28 +44,13 @@ class validate(tf.keras.callbacks.Callback):
 
 learner.set_weight_decay(wd)
 
-# learner.lr_find()
-# learner.lr_plot()
-# print(learner.lr_estimate())
-
 learner.fit_onecycle(
     lr, 
     2, 
     checkpoint_folder='models/'+ model_name + '-lr_'  + str(lr) + '-wd_' + str(wd),
     callbacks=[
-        tf.keras.callbacks.EarlyStopping(
-                    patience=2,
-                    monitor='val_loss',
-                    mode='min',
-                    #restore_best_weights=True
-                    ),
         validate()
     ])
-
-learner.plot('lr')
-learner.plot('loss')
-learner.plot('momentum')
-#learner.validate(class_names=t.get_classes())
 
 predictor = ktrain.get_predictor(learner.model, preproc=t)
 
