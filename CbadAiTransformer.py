@@ -68,17 +68,5 @@ learner.plot('momentum')
 #learner.validate(class_names=t.get_classes())
 
 predictor = ktrain.get_predictor(learner.model, preproc=t)
-print(predictor.predict([
-    'Fucking hate muslims sometimes', 
-    'Fucking hate myself sometimes',
-    'Damn jew asked for it',
-    "I'm jewish and I approve",
-    'My face when niggers walk on your lawn',
-    'Wassup nigguh',
-    "You're the biggest bitch I ever knew",
-    "Hey bitches, we're going shopping",
-    'The fat slut that you are',
-    "Look at my new slutty dress, shame I'm a bit fat for it"
-    ]))
 
 predictor.save(chk_path)
