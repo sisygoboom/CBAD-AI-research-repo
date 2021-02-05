@@ -29,7 +29,7 @@ class StandardiseDatasets:
         cornell = self.get_cornell()
         multimodal = self.get_MMHS150K()
         tweeteval = self.get_TweetEval_train()
-        combined = pd.concat([maryland, cornell, multimodal, tweeteval], ignore_index=True)
+        combined = pd.concat([cornell, multimodal, tweeteval], ignore_index=True)
         unique = combined.drop_duplicates()
         
         return unique
