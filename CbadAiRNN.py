@@ -16,7 +16,7 @@ class CbadAiRNN(CbadAi):
     def train(self, dataset='all'):
         self.device_calibration()
             
-        X_train, X_test, y_train, y_test, X, y = self._get_data(dataset, True)
+        X_train, X_test, y_train, y_test, X, y = self._get_data(dataset, 'tensor', False)
             
         vocab_size = 20000 # make the top list of words (common words)
         embedding_dim = 10

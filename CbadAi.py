@@ -29,7 +29,7 @@ class CbadAi:
         else:
             print('using cpu')
     
-    def _get_data(self, dataset, data_type=''):
+    def _get_data(self, dataset, data_type='', string=True):
         
         switch = {
             'all': self.ds.get_all,
@@ -39,6 +39,10 @@ class CbadAi:
             }
         
         data = switch[dataset]()
+        
+        if not string:
+            data['Code'] = [False if i == 'not hate' else True for i in data['Code']]
+            
         
         print(data['Code'].value_counts())
         

@@ -7,7 +7,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.layers import Dense, LSTM, Bidirectional, Conv1D, MaxPooling1D, GlobalMaxPooling1D, Embedding, Input, Flatten, Dropout
 from tensorflow.keras import backend as K
 import matplotlib.pyplot as plt
-#from metrics import f1
+from metrics import f1
 from tensorflow.keras.metrics import Recall, Precision
 
 import keras.backend as K
@@ -27,7 +27,7 @@ class CbadAiCNN(CbadAi):
         
         self.device_calibration()
             
-        X_train, X_test, y_train, y_test, X, y = self._get_data(dataset, True)
+        X_train, X_test, y_train, y_test, X, y = self._get_data(dataset, 'tensor', False)
         
         if char:
             vocab_size = 50 # make the top list of words (common words)

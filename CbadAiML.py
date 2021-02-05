@@ -12,11 +12,11 @@ from sklearn.feature_extraction.text import TfidfTransformer
 # from sklearn.ensemble import StackingClassifier, GradientBoostingClassifier
 # from sklearn.neighbors import KNeighborsClassifier, NearestCentroid
 # from sklearn.neighbors import KNeighborsTransformer
-# from sklearn.svm import SVC, LinearSVC
+from sklearn.svm import SVC, LinearSVC
 # from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 # from sklearn.tree import DecisionTreeClassifier, ExtraTreeClassifier
 # from sklearn.neural_network import MLPClassifier
-# from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import GridSearchCV
 
 class CbadAiML(CbadAi):
     def train(self, dataset='all', X_train=None, y_train=None):
@@ -49,17 +49,17 @@ class CbadAiML(CbadAi):
             #('clf', LogisticRegression()),
             #('clf', DecisionTreeClassifier(class_weight='balanced', splitter='random'))
             #('clf', AdaBoostClassifier())
-            ('clf', SVC(
-                kernel='linear',
-                C=6,
-                degree=1, 
-                coef0=-1, 
-                shrinking=False, 
-                probability=True,
-                class_weight='balanced',
-                decision_function_shape='ovo'
-                ))
-            #('clf', LinearSVC(class_weight='balanced', loss='hinge', C=0.1))
+            # ('clf', SVC(
+            #     kernel='linear',
+            #     C=6,
+            #     degree=1, 
+            #     coef0=-1, 
+            #     shrinking=False, 
+            #     probability=True,
+            #     class_weight='balanced',
+            #     decision_function_shape='ovo'
+            #     ))
+            ('clf', LinearSVC(class_weight='balanced', loss='hinge', C=0.1))
             #('clf', NearestCentroid())
             #('clf', ExtraTreeClassifier())
             #('clf', GradientBoostingClassifier())
