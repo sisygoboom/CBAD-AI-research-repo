@@ -8,6 +8,8 @@ x, y_true = sd.get_TweetEval_test()
 
 print(y_true)
 
+x = list(map(str.lower,x))
+
 y_pred = predictor.predict(x)
 y_pred = [False if i == 'not hate' else True for i in y_pred]
 
