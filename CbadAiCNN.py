@@ -3,8 +3,9 @@ import tensorflow as tf
 from tensorflow.keras.layers import Dense, Conv1D, MaxPooling1D, GlobalMaxPooling1D, Embedding, Input, Dropout
 from Evaluate import evaluate
 import ktrain
+from pathlib import Path
 
-
+Path('logs/cnn').mkdir(parents=True, exist_ok=True)
 
 class CbadAiCNN(CbadAi):    
     

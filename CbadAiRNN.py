@@ -5,7 +5,9 @@ from tensorflow.keras.metrics import Recall, Precision
 from metrics import f1
 import ktrain
 from Evaluate import evaluate
+from pathlib import Path
 
+Path('logs/rnn').mkdir(parents=True, exist_ok=True)
 
 class CbadAiRNN(CbadAi):   
     
