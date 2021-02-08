@@ -3,7 +3,6 @@ from StandardiseDatasets import StandardiseDatasets
 from sklearn.utils import Bunch
 import matplotlib as plt
 import tensorflow as tf
-import numpy as np
 
 class CbadAi:
     def __init__(self, test_size=0.05):
@@ -12,7 +11,7 @@ class CbadAi:
         self.test_size = test_size
         
     def plot(self, history):
-        for metric in ['loss', 'f1', 'precision', 'recall', 'accuracy']:
+        for metric in history.kistory.keys():
             plt.plot(history.history[metric])
             plt.plot(history.history['val_'+metric])
             plt.title('model '+metric)

@@ -89,7 +89,7 @@ class CbadAiML(CbadAi):
             #'clf__break_ties': (True, False)
         }
         
-        search = GridSearchCV(text_pipe, grid_params, scoring='balanced_accuracy')
+        search = GridSearchCV(text_pipe, grid_params, scoring='f1_macro')
         search.fit(X_train, y_train)
         
         return {
