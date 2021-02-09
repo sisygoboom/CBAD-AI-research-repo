@@ -9,16 +9,21 @@ cb = CbadAi(test_size=2)
 #cb = CbadAi()
 
 train_b, test_b = cb._get_data('tweeteval', 'ktrain')
-#train_b, test_b = cb._get_data('all', 'ktrain')
+val_b, test_b = cb._get_data('tweeteval_val', 'ktrain')
 
 x_train = train_b.data
 y_train = train_b.target
-x_test = test_b.data
-y_test = test_b.target
+if val_b:
+    x_test = val_b.data
+    y_test = val_b.target
+else:
+    x_test = test_b.data
+    y_test = test_b.target
+    
 
 model_name = 'vinai/bertweet-base'
 lr = 3e-5
-wd = 0.1
+wd = 0.01
 log_path = 'logs/'+model_name+'/lr_'+str(lr)+'/wd_'+str(wd)
 chk_path = 'models/tweeteval'
 #chk_path = 'models/'+ model_name+'-lr_'+str(lr)+'-wd_'+str(wd)

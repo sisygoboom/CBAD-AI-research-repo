@@ -6,8 +6,6 @@ sd = StandardiseDatasets()
 predictor = ktrain.load_predictor('models/tweeteval')
 x, y_true = sd.get_TweetEval_test()
 
-x = list(map(str.lower,x))
-
 y_pred = predictor.predict(x)
 y_pred = [False if i == 'not hate' else True for i in y_pred]
 

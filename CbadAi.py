@@ -34,7 +34,8 @@ class CbadAi:
             'all': self.ds.get_all,
             #'maryland': self.ds.get_maryland,
             'cornell': self.ds.get_cornell,
-            'tweeteval': self.ds.get_TweetEval_train
+            'tweeteval': self.ds.get_TweetEval_train,
+            'tweeteval_val': self.ds.get_TweetEval_val
             }
         
         data = switch[dataset]()

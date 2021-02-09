@@ -108,11 +108,27 @@ class StandardiseDatasets:
         with open('data/TweetEval/test_labels.txt', encoding='utf-8') as f:
             y = f.read().splitlines()
         
+        x = list(map(str.lower,x))
+        
         print(y)
         y = [False if int(i) == 0 else True for i in y]
         
         return x, y
+    
+    def get_TweetEval_val(self):
         
+        with open('data/TweetEval/val_text.txt', encoding='utf-8') as f:
+            x = f.read().splitlines()
+        with open('data/TweetEval/val_labels.txt', encoding='utf-8') as f:
+            y = f.read().splitlines()
+        
+        y = ['not hate' if int(i) == 0 else 'hate' for i in y]
+        
+        d = {'Tweet': x, 'Code': y}
+        
+        data = pd.DataFrame(d)
+        
+        return data
     
     
     def get_tweets(self, ids):
